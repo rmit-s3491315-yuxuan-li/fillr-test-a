@@ -5,6 +5,9 @@ module.exports.extract = function(window) {
   // Get all nodes by tag name "input"
   var base_Node = window.document.getElementsByTagName("input");
   
+  // Get node for <select> tag
+  var select_Node = window.document.getElementsByTagName("select");
+  
   // hash will store the metadata hash
   var hash = {};
  
@@ -27,6 +30,13 @@ module.exports.extract = function(window) {
     hash[hash_Key] = hash_Value;
   
   }
+  
+  // select_Node is an array, although it just has 1 element. Still need index [0]
+  hash_Key = select_Node[0].parentNode.previousSibling.firstChild.nodeValue.trim();
+  hash_Value = hash_Key + " " + select_Node[0].name;
+  
+  // Store the hash key/value pair for "country"
+  hash[hash_Key] = hash_Value;
   
   return hash;
 }
