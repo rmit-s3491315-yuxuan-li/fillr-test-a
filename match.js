@@ -12,9 +12,9 @@ module.exports.match = function(hash) {
   for (var key in hash) {
     
     // Check if the key meets the reg, 
-    //  if match, appends the current hash key's correspondent hash value to the array 
+    //  if match, appends the current hash key to the array 
     if (reg.test(key))
-      metadata_value.push(hash[key]);
+      metadata_value.push(key);
   }
   
   return metadata_value;
